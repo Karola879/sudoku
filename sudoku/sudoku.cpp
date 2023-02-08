@@ -18,7 +18,7 @@ string sprawdzenieWpisanych(string wiersz, string kolumna, string cyfra, int dom
 	else {
 		if (wartosc_cyfra < 0 || wartosc_cyfra > 9 || wartosc_wiersz < 1 || wartosc_wiersz > 9 || wartosc_kolumna < 1 || wartosc_kolumna > 9) //wiersze, kolumny i cyfry s¹ wpisywane z przedzia³u 1-9
 			return "bledne wartosci";
-		else if (domyslneWartosci[wartosc_wiersz - 1][wartosc_kolumna - 1] != 0)						//nie mo¿na zastêpowaæ domyœlnych wartoœci
+		else if (domyslneWartosci[wartosc_wiersz - 1][wartosc_kolumna - 1] != 0)	//nie mo¿na zastêpowaæ domyœlnych wartoœci
 			return "domyslne wartosci";
 		else
 			return "mozna wpisac";
@@ -91,7 +91,7 @@ void wyswietlanie(int plansza[9][9], int domyslneWartosci[9][9], int zle[9][9]) 
 	}
 }
 
-int zliczaniePustych(int plansza[9][9]) {										//zlicza ile pól w planszy - tablica "plansza" - nie ma wpisanej wartoœci tzn. ma wartoœæ 0
+int zliczaniePustych(int plansza[9][9]) {											//zlicza ile pól w planszy - tablica "plansza" - nie ma wpisanej wartoœci tzn. ma wartoœæ 0
 	int ile_pustych{};
 	for (int i = 0; i < 9; i++) {
 		for (int j = 0; j < 9; j++) {
@@ -102,7 +102,7 @@ int zliczaniePustych(int plansza[9][9]) {										//zlicza ile pól w planszy - 
 	return ile_pustych;
 }
 
-void uzupelnianie(int plansza[9][9], int domyslneWartosci[9][9], int zle[9][9]) { //wpisuje podan¹ cyfrê w podane pole w tablicy "plansza" pod warunkiem spe³nienia odpowiednich kryteriów
+void uzupelnianie(int plansza[9][9], int domyslneWartosci[9][9], int zle[9][9]) {	//wpisuje podan¹ cyfrê w podane pole w tablicy "plansza" pod warunkiem spe³nienia odpowiednich kryteriów
 	string wiersz{}, kolumna{}, cyfra{};
 	while (zliczaniePustych(plansza) > 0) {
 		system("cls");
@@ -134,7 +134,7 @@ void uzupelnianie(int plansza[9][9], int domyslneWartosci[9][9], int zle[9][9]) 
 }
 
 int sprawdzenieSudoku(int plansza[9][9], int rozwiazanie[9][9], int zle[9][9]) { //sprawdza które pola s¹ Ÿle uzupe³nione, zwraca ile jest takich pól oraz zamienia odpowiednie 
-	//pola w tablicy "zle" na 1 jeœli wartoœæ w tablicy "plansza" podana przez u¿ytkownika jest b³êdna
+																				 //pola w tablicy "zle" na 1 jeœli wartoœæ w tablicy "plansza" podana przez u¿ytkownika jest b³êdna
 	int ile_zlych{};
 	for (int i = 0; i < 9; i++) {
 		for (int j = 0; j < 9; j++) {
@@ -160,39 +160,39 @@ void usuniecieZlych(int plansza[9][9], int zle[9][9]) {							//usuwa b³êdne cyf
 
 bool czyTak(string slowo) {														//sprawdza czy podanie s³owo jest jednym mo¿liwych opcji
 	if (slowo.length() == 3)										//3 znaki
-		if (slowo[0] == 84 || slowo[0] == 116)					//t lub T
-			if (slowo[1] == 65 || slowo[1] == 97)				//a lub A
-				if (slowo[2] == 75 || slowo[2] == 107)			//k lub K
+		if (slowo[0] == 84 || slowo[0] == 116)						//t lub T
+			if (slowo[1] == 65 || slowo[1] == 97)					//a lub A
+				if (slowo[2] == 75 || slowo[2] == 107)				//k lub K
 					return true;
 	return false;
 }
 
 bool czyNie(string slowo) {
 	if (slowo.length() == 3)										//3 znaki
-		if (slowo[0] == 78 || slowo[0] == 110)					//n lub N
-			if (slowo[1] == 73 || slowo[1] == 105)				//i lub I
-				if (slowo[2] == 69 || slowo[2] == 101)			//e lub E
+		if (slowo[0] == 78 || slowo[0] == 110)						//n lub N
+			if (slowo[1] == 73 || slowo[1] == 105)					//i lub I
+				if (slowo[2] == 69 || slowo[2] == 101)				//e lub E
 					return true;
 	return false;
 }
 
 int main() {
-	hOut = GetStdHandle(STD_OUTPUT_HANDLE);						//potrzebne do zmiany koloru czcionki
+	hOut = GetStdHandle(STD_OUTPUT_HANDLE);							//potrzebne do zmiany koloru czcionki
 	string menu{};
-	while (menu != "4") {										//pêtla obraca siê dopóki u¿ytkownik nie chce wyjœæ z programu
+	while (menu != "4") {											//pêtla obraca siê dopóki u¿ytkownik nie chce wyjœæ z programu
 		system("cls");
-		SetConsoleTextAttribute(hOut, 10);						//zmiana koloru na jasnozielony
+		SetConsoleTextAttribute(hOut, 10);							//zmiana koloru na jasnozielony
 		cout << ".:SUDOKU:." << endl;
 		SetConsoleTextAttribute(hOut, FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_RED);
-		cout << "Witaj w grze Sudoku" << endl;					//pocz¹tek menu
+		cout << "Witaj w grze Sudoku" << endl;						//pocz¹tek menu
 		cout << "1. Graj" << endl;
 		cout << "2. Zasady" << endl;
 		cout << "3. Autor" << endl;
-		cout << "4. Wyjdz" << endl;								//koniec menu
+		cout << "4. Wyjdz" << endl;									//koniec menu
 		cout << endl << "Wybierz opcje ";
 		cin >> menu;
 
-		int wartosc_menu{};										//sprawdzanie poprawnoœci wartoœci zmiennej menu
+		int wartosc_menu{};											//sprawdzanie poprawnoœci wartoœci zmiennej menu
 		wartosc_menu = atoi(menu.c_str());
 		if (menu.length() > 1 || wartosc_menu < 1 || wartosc_menu > 4) {//jeœli b³êdna wartoœæ to kolejny obrót pêtli while
 			cout << "Prosze podac prawidlowa wartosc.";
@@ -201,7 +201,7 @@ int main() {
 		}
 
 		switch (wartosc_menu) {
-		case 1: {												//wybrano opcjê nowej gry
+		case 1: {													//wybrano opcjê nowej gry
 			string poziom{};
 			bool czy_dobry_poziom = false;
 			int wartosc_poziom{};
@@ -215,7 +215,7 @@ int main() {
 				cin >> poziom;
 				cout << endl;
 
-				wartosc_poziom = atoi(poziom.c_str());			//sprawdzanie poprawnoœci wartoœci zmiennej poziom
+				wartosc_poziom = atoi(poziom.c_str());				//sprawdzanie poprawnoœci wartoœci zmiennej poziom
 				if (poziom.length() > 1 || wartosc_poziom < 1 || wartosc_poziom > 3) {
 					cout << "Prosze podac prawidlowa wartosc.";
 					czy_dobry_poziom = false;
@@ -226,7 +226,7 @@ int main() {
 					czy_dobry_poziom = true;
 				}
 			}
-			string poziom_plik_nazwa, rozwiazanie_plik_nazwa;	//wczytywanie do zmiennych nazw plików, odpowiedznich do wybranego poziomu
+			string poziom_plik_nazwa, rozwiazanie_plik_nazwa;		//wczytywanie do zmiennych nazw plików, odpowiedznich do wybranego poziomu
 			if (wartosc_poziom == 1) {
 				poziom_plik_nazwa = "latwy_sudoku.txt";
 				rozwiazanie_plik_nazwa = "latwy_rozwiazanie.txt";
@@ -240,63 +240,86 @@ int main() {
 				rozwiazanie_plik_nazwa = "trudny_rozwiazanie.txt";
 			}
 
-			int zle[9][9] = {};									// tablica na b³êdne wartoœci w danych polach - domyœlnie wszêdzie 0
+			int zle[9][9] = {};										// tablica na b³êdne wartoœci w danych polach - domyœlnie wszêdzie 0
 
-			//wczytywanie danych z plików: pocz¹tek
-			int plansza[9][9] = {};								//tablica z plansz¹
-			fstream plik_plansza(poziom_plik_nazwa);
-			for (int i = 0; i < 9; i++) {
-				for (int j = 0; j < 9; j++) {
-					plik_plansza >> plansza[i][j];
+																	//wczytywanie danych z plików: pocz¹tek
+			int plansza[9][9] = {};									//tablica z plansz¹
+			fstream plik_plansza(poziom_plik_nazwa, ios::in);
+			if (plik_plansza.good()) {								//sprawdzenie czy plik sie otworzyl
+				for (int i = 0; i < 9; i++) {
+					for (int j = 0; j < 9; j++) {
+						plik_plansza >> plansza[i][j];
+					}
 				}
+				plik_plansza.close();
 			}
-			plik_plansza.close();
+			else {
+				cout << "Problem z plikiem planszy " << poziom_plik_nazwa <<endl;
+				plik_plansza.close();
+				Sleep(2000);
+				break;
+			}
+		
+			int odpowiedzi[9][9] = {};								//tablica z odpowiedziami
+			fstream plik_odpowiedzi(rozwiazanie_plik_nazwa, ios::in);
+			if (plik_odpowiedzi.good()) {							//sprawdzenie czy plik sie otworzyl
+				for (int i = 0; i < 9; i++) {
+					for (int j = 0; j < 9; j++) {
+						plik_odpowiedzi >> odpowiedzi[i][j];
+					}
+				}
+				plik_odpowiedzi.close();
+			}
+			else {
+				cout << "Problem z plikiem odpowiedzi " << rozwiazanie_plik_nazwa << endl;
+				plik_odpowiedzi.close();
+				Sleep(2000);
+				break;
+			}
 
-			int odpowiedzi[9][9] = {};							//tablica z odpowiedziami
-			fstream plik_odpowiedzi(rozwiazanie_plik_nazwa);
-			for (int i = 0; i < 9; i++) {
-				for (int j = 0; j < 9; j++) {
-					plik_odpowiedzi >> odpowiedzi[i][j];
+			int domyslne_wartosci[9][9] = {};						//tablica z podanymi domyœlnie wartoœciami, których nie mo¿na zmieniæ
+			fstream plik_domyslne_wartosci(poziom_plik_nazwa, ios::in);
+			if (plik_domyslne_wartosci.good()) {					//sprawdzenie czy plik sie otworzyl
+				for (int i = 0; i < 9; i++) {
+					for (int j = 0; j < 9; j++) {
+						plik_domyslne_wartosci >> domyslne_wartosci[i][j];
+					}
 				}
+				plik_domyslne_wartosci.close();
 			}
-			plik_odpowiedzi.close();
-
-			int domyslneWartosci[9][9] = {};					//tablica z podanymi domyœlnie wartoœciami, których nie mo¿na zmieniæ
-			fstream plik_domyslneWartosci(poziom_plik_nazwa);
-			for (int i = 0; i < 9; i++) {
-				for (int j = 0; j < 9; j++) {
-					plik_domyslneWartosci >> domyslneWartosci[i][j];
-				}
-			}
-			plik_domyslneWartosci.close();
-			//wczytywanie danych z plików: koniec
+			else {
+				cout << "Problem z plikiem domyslnych wartosci " << poziom_plik_nazwa << endl;
+				plik_domyslne_wartosci.close();
+				Sleep(2000);
+				break;
+			}														//wczytywanie danych z plików: koniec
 
 			int ilosc_bledow{};
 			do {
-				uzupelnianie(plansza, domyslneWartosci, zle);	//uzupe³nianie ca³ej planszy
+				uzupelnianie(plansza, domyslne_wartosci, zle);		//uzupe³nianie ca³ej planszy
 
-				wyswietlanie(plansza, domyslneWartosci, zle);	//wczytywanie uzupe³nionej planszy
+				wyswietlanie(plansza, domyslne_wartosci, zle);		//wczytywanie uzupe³nionej planszy
 
-				//czy sprawdzenie b³êdów: pocz¹tek
+																	//czy sprawdzenie b³êdów: pocz¹tek
 				system("cls");
-				wyswietlanie(plansza, domyslneWartosci, zle);
+				wyswietlanie(plansza, domyslne_wartosci, zle);
 				string czy_sprawdzasz;
 				cout << "Czy chcesz sprawdzic swoje rozwiazanie? Wpisz tak lub nie: ";
-				do {											//dopóki nie zostan¹ wisane poprawne wartoœci
+				do {												//dopóki nie zostan¹ wisane poprawne wartoœci
 					cin >> czy_sprawdzasz;
 					if (!czyTak(czy_sprawdzasz) && !czyNie(czy_sprawdzasz)) {
 						cout << "Wpisano bledna wartosc. Wpisz poprawna wartosc: tak lub nie: " << endl;
 					}
 				} while (!czyTak(czy_sprawdzasz) && !czyNie(czy_sprawdzasz));
-				//czy sprawdzenie b³êdów: koniec
+																	//czy sprawdzenie b³êdów: koniec
 
-				//czy poprawa b³êdów: pocz¹tek
+																	//czy poprawa b³êdów: pocz¹tek
 				string czy_poprawiasz;
 				if (czyTak(czy_sprawdzasz)) {
 					ilosc_bledow = sprawdzenieSudoku(plansza, odpowiedzi, zle);
-					if (ilosc_bledow == 0) {					//plansza uzupe³niona prawid³owo
+					if (ilosc_bledow == 0) {						//plansza uzupe³niona prawid³owo
 						system("cls");
-						wyswietlanie(plansza, domyslneWartosci, zle);
+						wyswietlanie(plansza, domyslne_wartosci, zle);
 						cout << "Gratulacje! Rozwiazales sudoku poprawnie!" << endl;
 						Sleep(1000);
 						cout << "Wcisnij ENTER aby wrocic do menu." << endl;
@@ -304,10 +327,10 @@ int main() {
 						cin.get();
 						continue;
 					}
-					else {										//plansza b³ednie uzupe³niona
+					else {											//plansza b³ednie uzupe³niona
 						system("cls");
-						wyswietlanie(plansza, domyslneWartosci, zle);
-						if (ilosc_bledow == 1) {				//¿eby by³a ³adna odmiana
+						wyswietlanie(plansza, domyslne_wartosci, zle);
+						if (ilosc_bledow == 1) {					//¿eby by³a ³adna odmiana
 							cout << "Masz " << ilosc_bledow << " blad. " << endl;
 						}
 						else if (ilosc_bledow > 1 && ilosc_bledow < 5) {
@@ -323,10 +346,10 @@ int main() {
 							}
 						} while (!czyTak(czy_poprawiasz) && !czyNie(czy_poprawiasz));
 					}
-					//czy poprawa b³êdów: koniec
+																	//czy poprawa b³êdów: koniec
 
 					if (czyTak(czy_poprawiasz)) {
-						usuniecieZlych(plansza, zle);			// usuniêcie b³êdnych odpowiedzi
+						usuniecieZlych(plansza, zle);				//usuniêcie b³êdnych odpowiedzi
 					}
 					else if (czyNie(czy_poprawiasz)) {
 						cout << "Wcisnij ENTER aby wrocic do menu." << endl;
@@ -344,7 +367,7 @@ int main() {
 			} while (ilosc_bledow > 0);
 			break;
 		}
-		case 2: {												//wybrano opcjê zasad, wypisane s¹ zasady gry oraz instrukcja jak wpisywaæ wartoœci, a tak¿e legenda kolorów
+		case 2: {													//wybrano opcjê zasad, wypisane s¹ zasady gry oraz instrukcja jak wpisywaæ wartoœci, a tak¿e legenda kolorów
 			system("cls");
 			cout << "Zasady i instrukcja" << endl;
 			cout << "Celem gry jest wypelnienie wszystkich pustych komorek cyframi od 1 do 9 w taki sposob, aby kazda cyfra wystepowala tylko raz w kolumnie (pionowo), w wierszu (poziomo) i w bloku (3x3 komorki)." << endl << endl;
@@ -364,7 +387,7 @@ int main() {
 			cin.get();
 			break;
 		}
-		case 3: {												//wybrano opcjê autora
+		case 3: {													//wybrano opcjê autora
 			system("cls");
 			cout << "Autorem tego kodu jest Karolina Kamela." << endl;
 			Sleep(1000);
@@ -373,7 +396,7 @@ int main() {
 			cin.get();
 			break;
 		}
-		case 4: {												//wybrano opcjê wyjœcia
+		case 4: {													//wybrano opcjê wyjœcia
 			system("cls");
 			cout << "Czy na pewno chcesz wyjsc? [tak/nie]" << endl;
 			string czy_wyjsc;
@@ -383,12 +406,12 @@ int main() {
 				cout << "Wpisano bledna wartosc. Wpisz poprawna wartosc: tak lub nie: ";
 				cin >> czy_wyjsc;
 			}
-			if (czyNie(czy_wyjsc)) {							//jeœli nie wyjœæ - powrót do menu
+			if (czyNie(czy_wyjsc)) {								//jeœli nie wyjœæ - powrót do menu
 				cout << "Nastapi powrot do menu gry." << endl;
-				menu = {};										//wyzerowanie zmiennej menu ¿eby pêtla siê nie przerwa³a
+				menu = {};											//wyzerowanie zmiennej menu ¿eby pêtla siê nie przerwa³a
 				continue;
 			}
-			else if (czyTak(czy_wyjsc)) {						//jeœli wyjœæ - koniec obiegu pêtli
+			else if (czyTak(czy_wyjsc)) {							//jeœli wyjœæ - koniec obiegu pêtli
 				cout << "Program za chwile sie zamknie." << endl;
 				Sleep(2000);
 				break;
